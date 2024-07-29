@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color:#000000;">
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 80px;background-color:#000000;padding:20px;border:solid 1px #fff;margin: 80px 40% 0px 40%;text-align:center; color:#fff">
+            <p>Enter Steam User ID to view user info</p>
+            <br />
+
+            <form th:action="@{/api/v1/info}" method="GET" class="form-signin">
+                <input type="text" id="steamid" name="steamid" placeholder="Steam User ID" class="form-control" />
+                <br />
+                <button class="btn btn-success btn-block" type="Submit" th:text="Enter" style="margin-right:10px;"></button>
+            </form>
+
+        </div>
+<!--        <div class="row" style="margin-top: 80px;background-color:#000000;padding:20px;border:solid 1px #fff;margin: 80px 40% 0px 40%;text-align:center; color:#fff">-->
+<!--            <p>Enter Steam User ID to view user info</p>-->
+<!--            <br />-->
+
+<!--            <form th:action="@{/api/v1/profile}" method="GET" class="form-signin">-->
+<!--                <input type="text" id="steamid" name="steamid" placeholder="Steam User ID" class="form-control" />-->
+<!--                <br />-->
+<!--                <button class="btn btn-success btn-block" type="Submit" th:text="Enter" style="margin-right:10px;"></button>-->
+<!--            </form>-->
+
+<!--        </div>-->
+
+<!--        <div class="row" style="margin-top: 80px;background-color:#000000;padding:20px;border:solid 1px #fff;margin: 80px 40% 0px 40%;text-align:center; color:#fff">-->
+<!--            <p>Enter Steam User ID to view list of games played</p>-->
+<!--            <br />-->
+
+<!--            <form th:action="@{/api/v1/games}" method="GET" class="form-signin">-->
+<!--                <input type="text" id="steamid" name="steamid" placeholder="Steam User ID" class="form-control" />-->
+<!--                <br />-->
+<!--                <button class="btn btn-success btn-block" type="Submit" th:text="Enter" style="margin-right:10px;"></button>-->
+<!--            </form>-->
+
+<!--        </div>-->
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Games</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/gamesAnimate.css}" />
+    <link rel="stylesheet" th:href="@{/css/games.css}" />
+    <script type="text/javascript" th:src="@{/js/games.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #000000;">
+    <div class="container-fluid" style="margin-top: 30px;">
+        <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #000000; padding: 20px; border: solid 1px #fff;">
+            <br/>
+
+            <div th:if="${games.empty}">
+                No Games Available
+            </div>
+
+            <section class="portfolio" id="landscape">
+                <div th:each="game, itemStat : ${games}">
+                    <div class="container1">
+                        <img th:src="${game.imageLink}"
+                             style="max-width:100%; cursor:pointer;"
+                             onclick="onClick(this)"
+                             class="modal-hover-opacity">
+                        <div class="infoPhotoCaption1" th:text="'Name: ' + ${game.name}" th:style="${'color:#fff'}"></div>
+                        <div class="infoPhotoCaption2" th:text="'Hours played: ' + ${game.hours + ' ' + game.timeUnit}" th:style="${'color:#fff'}"></div>
+                        <div class="infoPhotoCaption2" th:text="'Last: ' + ${game.lastTimePlayed}" th:style="${'color:#fff'}"></div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="modal01" class="modal" onclick="this.style.display='none'">
+                <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <div class="modal-content">
+                    <img id="img01" style="height:300px; width:auto">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

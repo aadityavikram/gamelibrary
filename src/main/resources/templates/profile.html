@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Games</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/gamesAnimate.css}" />
+    <link rel="stylesheet" th:href="@{/css/profile.css}" />
+    <script type="text/javascript" th:src="@{/js/games.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #000000;">
+    <div class="container-fluid" style="margin-top: 30px;">
+        <div class="row col-lg-3 col-lg-offset-4" style="margin-top: 40px; background-color: #000000; padding: 20px; border: solid 1px #fff;">
+            <br/>
+
+            <section class="portfolio" id="landscape">
+                <div class="container1">
+                    <img th:src="${profile.avatar}"
+                         style="max-width:100%; cursor:pointer; height:220px; width:auto"
+                         onclick="onClick(this)"
+                         class="modal-hover-opacity">
+                    <div class="container2">
+                        <div class="profileCaption" th:text="'Name: ' + ${profile.realName}" th:style="${'color:#fff'}"></div>
+                        <div class="profileCaption" th:text="'Username: ' + ${profile.personaName}" th:style="${'color:#fff'}"></div>
+                        <div class="profileCaption" th:text="'Steam ID: ' + ${profile.steamId}" th:style="${'color:#fff'}"></div>
+                        <a th:href="${profile.profileUrl}"><div class="profileCaption" th:text="'Profile: ' + ${profile.profileUrl}" th:style="${'color:#fff'}"></div></a>
+                        <div class="profileCaption" th:text="'Last Active: ' + ${profile.lastLogOff}" th:style="${'color:#fff'}"></div>
+                        <div class="profileCaption" th:text="'Currently ' + ${profile.currentStatus}" th:style="${'color:#fff'}"></div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="modal01" class="modal" onclick="this.style.display='none'">
+                <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <div class="modal-content">
+                    <img id="img01" style="height:300px; width:auto">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

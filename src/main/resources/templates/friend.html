@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Games</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/gamesAnimate.css}" />
+    <link rel="stylesheet" th:href="@{/css/games.css}" />
+    <script type="text/javascript" th:src="@{/js/games.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #000000;">
+    <div class="container-fluid" style="margin-top: 30px;">
+        <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #000000; padding: 20px; border: solid 1px #fff;">
+            <br/>
+
+            <div th:if="${friends.friends.empty}">
+                No Friends Available
+            </div>
+
+            <section class="portfolio" id="landscape">
+                <div th:each="friend, itemStat : ${friends.friends}">
+                    <div class="container1">
+                        <div class="infoPhotoCaption1" th:text="'Name: ' + ${friend.steamId}" th:style="${'color:#fff'}"></div>
+                        <div class="infoPhotoCaption2" th:text="'Friend since: ' + ${friend.friendSince}" th:style="${'color:#fff'}"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</body>
+</html>

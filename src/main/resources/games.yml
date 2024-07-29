@@ -1,0 +1,119 @@
+openapi: "3.0.1"
+info:
+  title: Game Library from Steam
+  version: 1.0.0
+paths:
+  /games:
+    get:
+      summary: List all games owned on Steam
+      operationId: listGames
+      tags:
+        - games
+      parameters:
+        - name: steamid
+          in: query
+          schema:
+            type: string
+          description: "Steam ID of user"
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Response:
+      type: object
+      properties:
+        response:
+          type: object
+          $ref: '#/components/schemas/GamesResponse'
+    GamesResponse:
+      type: object
+      properties:
+        game_count:
+          type: string
+        games:
+          type: array
+          items:
+            $ref: '#/components/schemas/Games'
+    Games:
+      type: object
+      properties:
+        appid:
+          type: string
+        name:
+          type: string
+        playtime_forever:
+          type: string
+        img_icon_url:
+          type: string
+        playtime_windows_forever:
+          type: string
+        playtime_mac_forever:
+          type: string
+        playtime_linux_forever:
+          type: string
+        playtime_deck_forever:
+          type: string
+        rtime_last_played:
+          type: string
+        playtime_disconnected:
+          type: string
+    AllGames:
+      type: object
+      properties:
+        applist:
+          type: object
+          $ref: '#/components/schemas/GamesList'
+    GamesList:
+      type: object
+      properties:
+        apps:
+          type: array
+          items:
+            $ref: '#/components/schemas/SteamGames'
+    FormattedGamesResponse:
+      type: object
+      properties:
+        game_count_total:
+          type: string
+        game_count_played:
+          type: string
+        game_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormattedGames'
+    FormattedGames:
+      type: object
+      properties:
+        name:
+          type: string
+        hours_played:
+          type: float
+    SteamGames:
+      type: object
+      properties:
+        appid:
+          type: string
+        name:
+          type: string
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
